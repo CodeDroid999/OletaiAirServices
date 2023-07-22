@@ -1,0 +1,33 @@
+fragment QuoteFields on ComponentQuote {
+  __typename
+  sys {
+    id
+  }
+  quote {
+    json
+    links {
+      entries {
+        block {
+          ...ComponentReferenceFields
+        }
+      }
+      assets {
+        block {
+          ...AssetFields
+        }
+      }
+    }
+  }
+  quoteAlignment
+  image {
+    ...AssetFields
+  }
+  imagePosition
+  colorPalette
+}
+
+query CtfQuote($id: String!, $locale: String, $preview: Boolean) {
+  componentQuote(id: $id, locale: $locale, preview: $preview) {
+    ...QuoteFields
+  }
+}

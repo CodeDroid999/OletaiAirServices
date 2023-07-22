@@ -1,0 +1,32 @@
+fragment BusinessInfoFields on TopicBusinessInfo {
+  __typename
+  sys {
+    id
+  }
+  name
+  shortDescription
+  featuredImage {
+    ...AssetFields
+  }
+  body {
+    json
+    links {
+      entries {
+        block {
+          ...ComponentReferenceFields
+        }
+      }
+      assets {
+        block {
+          ...AssetFields
+        }
+      }
+    }
+  }
+}
+
+query CtfBusinessInfo($id: String!, $locale: String, $preview: Boolean) {
+  topicBusinessInfo(id: $id, preview: $preview, locale: $locale) {
+    ...BusinessInfoFields
+  }
+}

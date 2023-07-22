@@ -1,0 +1,6 @@
+fragment ComponentReferenceFields on Entry {
+  __typename
+  sys {
+    id
+  }
+}
